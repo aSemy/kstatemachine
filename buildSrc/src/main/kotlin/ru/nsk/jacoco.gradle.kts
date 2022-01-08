@@ -22,6 +22,13 @@ tasks.jacocoTestReport {
         csv.required.set(false)
         html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
     }
+
+    doLast {
+        val htmlReportLocation = reports.html.outputLocation.locationOnly
+            .map { it.asFile.resolve("index.html").invariantSeparatorsPath }
+
+        logger.lifecycle("Jacoco report for ${project.name}: ${htmlReportLocation.get()}")
+    }
 }
 
 tasks.jacocoTestCoverageVerification {
