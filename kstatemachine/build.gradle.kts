@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 buildscript {
     dependencies {
         classpath("org.jacoco:org.jacoco.core:0.8.7")
@@ -7,7 +5,7 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm") version "1.5.31"
+    ru.nsk.`kotlin-jvm`
     `java-library`
     jacoco
 }
@@ -16,10 +14,6 @@ version = "0.9.0"
 
 jacoco {
     toolVersion = "0.8.7"
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
 }
 
 tasks.test {
