@@ -1,59 +1,19 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
-buildscript {
-    dependencies {
-        classpath("org.jacoco:org.jacoco.core:0.8.7")
-    }
-}
-
 plugins {
-    kotlin("jvm") version "1.5.31"
+    ru.nsk.`kotlin-jvm`
+    ru.nsk.jacoco
+    ru.nsk.`maven-publish`
     `java-library`
-    jacoco
-}
-group = "ru.nsk"
-version = "0.9.0"
-
-repositories {
-    mavenCentral()
 }
 
-jacoco {
-    toolVersion = "0.8.7"
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
-tasks.test {
-    useJUnitPlatform()
-    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
-}
-
-tasks.jacocoTestReport {
-    dependsOn(tasks.test)
-    reports {
-        xml.required.set(true)
-        csv.required.set(false)
-        html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
-    }
-}
-
-tasks.jacocoTestCoverageVerification {
-    violationRules {
-        rule {
-            limit { minimum = "0.7".toBigDecimal() }
-        }
-    }
-}
-
-tasks.check {
-    dependsOn(tasks.jacocoTestCoverageVerification)
-}
+group = rootProject.group
+version = rootProject.version
 
 dependencies {
-    testImplementation("io.kotest:kotest-assertions-core:4.2.5")
-    testImplementation("io.kotest:kotest-runner-junit5:4.6.3")
-    testImplementation("io.mockk:mockk:1.11.0")
+    val kotestVersion = "5.0.3"
+    testImplementation(platform("io.kotest:kotest-bom:$kotestVersion"))
+    testImplementation("io.kotest:kotest-assertions-core")
+    testImplementation("io.kotest:kotest-runner-junit5")
+
+    val mockkVersion = "1.12.1"
+    testImplementation("io.mockk:mockk:$mockkVersion")
 }

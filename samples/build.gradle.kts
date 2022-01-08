@@ -1,23 +1,15 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "1.5.31"
+    ru.nsk.`kotlin-jvm`
     application
 }
-group = "ru.nsk"
 
-repositories {
-    mavenCentral()
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-}
+group = rootProject.group
+version = rootProject.version
 
 dependencies {
     implementation(project(":kstatemachine"))
 }
 
 application {
-    mainClassName = "FullSyntaxSample"
+    mainClass.set("FullSyntaxSample")
 }
