@@ -3,7 +3,8 @@
 @Suppress("UnstableApiUsage") // Central declaration of repositories is an incubating feature
 dependencyResolutionManagement {
 
-    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    // awaiting fix: https://github.com/gradle/gradle/pull/18740
+    // repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
 
     repositories {
         mavenCentral()
