@@ -14,10 +14,6 @@ plugins {
 group = "ru.nsk"
 version = "0.9.0"
 
-repositories {
-    mavenCentral()
-}
-
 jacoco {
     toolVersion = "0.8.7"
 }
