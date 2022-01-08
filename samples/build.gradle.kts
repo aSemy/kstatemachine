@@ -1,15 +1,15 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     ru.nsk.`kotlin-jvm`
     application
 }
-group = "ru.nsk"
+
+group = rootProject.group
+version = rootProject.version
 
 dependencies {
     implementation(project(":kstatemachine"))
 }
 
 application {
-    mainClassName = "FullSyntaxSample"
+    mainClass.set("FullSyntaxSample")
 }

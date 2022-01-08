@@ -1,11 +1,12 @@
 plugins {
     ru.nsk.`kotlin-jvm`
     ru.nsk.jacoco
+    ru.nsk.`maven-publish`
     `java-library`
 }
 
-group = "ru.nsk"
-version = "0.9.0"
+group = rootProject.group
+version = rootProject.version
 
 dependencies {
     val kotestVersion = "5.0.3"
