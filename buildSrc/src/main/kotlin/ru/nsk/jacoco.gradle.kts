@@ -1,7 +1,6 @@
 package ru.nsk
 
 import org.gradle.kotlin.dsl.jacoco
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
